@@ -1,0 +1,52 @@
+{% extends 'TaskApp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    POST
+{% endblock  %}
+
+{% block content %}
+
+
+
+    <div class="container"><br>
+        <h1 class="my_title text-center">
+            Post Your Services Here
+        </h1><br>
+        <div class="row">
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 bg-light">
+                <div>
+                    <br>
+                        <h2 class="my_title"><br><br><br><br><br><br>
+                            <center>new post</center> 
+                        </h2>                
+                            <br><br>
+                            <center>post can be reached to all the clients</center>
+                            
+                            <br><br><br><br><br><br>   
+
+                    <br>
+                </div>
+            </div>
+             
+             <div class="col-12 col-sm-12 col-md-12 col-lg-6 bg-light">
+                 <div>
+                     <br>
+                     
+                     <form method="POST">
+                         {% csrf_token %}
+                         <p>{{ form | crispy }}</p>
+                         <button type="submit" class="btn btn-primary">Post</button>
+                     </form>
+                     <br>
+                 </div>
+             </div>
+             
+        </div><br>
+    </div>
+    <br>
+
+
+
+{% endblock  %}

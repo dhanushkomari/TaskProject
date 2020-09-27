@@ -1,0 +1,58 @@
+{% extends 'TaskApp/base.html' %}
+
+{% block content %}
+    <br><br><br>
+    <div class="container">
+
+{% if user.is_authenticated %}  
+    
+    {% if request.user.is_staff %}
+    <div class="container">  
+        <h2 class="my_title">Welcome, <span style="color: blue;">{{user.username|title}}</span></h2>
+        {% comment %} <a href="{% url 'TaskApp:signout' %}" class="mytitle">Logout</a> {% endcomment %}
+        <br>
+        <center>    
+        <a href="{% url 'TaskApp:sp-create'%}" class="btn btn-primary btn-lg"> CREATE SERVICE PROVIDER ACCOUNT</a>       
+        <br><br><br>    
+        <a href="{% url 'TaskApp:client-create'%}" class="btn btn-warning btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREATE CLIENT ACCOUNT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+       </center>
+
+    </div><br>
+    {% elif request.user in sp %}
+        
+        <div class="container">
+            <h2 class="my_title">Welcome,  <span style="color: blueviolet;">{{request.user|title}}</span></h2>
+        </div><br><br><br>
+        <center><a href="{% url 'AppPost:post-form' %}" class="btn btn-primary btn-lg">Create Posts</a></center>
+    
+    
+    {% else %}    
+             
+    <div class="container">
+        <div class="container">
+            <h2 class="my_title">Welcome,  <span style="color: blueviolet;">{{request.user|title}}</span></h2>
+        </div><br><br><br>
+            <center>
+                <a href="{% url 'AppPost:post-list' %}" class="btn btn-primary btn-lg">See Posts</a>
+                &nbsp;&nbsp;&nbsp;
+                
+            </center>
+    </div> 
+    
+           
+         
+    {% endif %}
+{% else %}
+<br><br><br>
+    <center>
+        <a href="{% url 'TaskApp:login-admin' %}" class="btn btn-primary btn-lg">Login As Admin</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'TaskApp:login-sp' %}" class="btn btn-warning btn-lg">Login As Service Provider</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'TaskApp:login-client' %}" class="btn btn-success btn-lg">Login As Client</a>
+    </center>
+
+{% endif %}
+
+
+    
+    </div>
+{% endblock  %}

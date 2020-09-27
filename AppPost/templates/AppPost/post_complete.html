@@ -1,0 +1,15 @@
+{% extends 'TaskApp/base.html' %}
+{% block content %}
+{% if user.is %}{% endif %}
+<div class="container">
+    <br><br><br><br><br><br>
+    <center>
+        <h2 class="my_title">
+            your post has been created.
+        </h2><br><br>
+            <a href="{% url 'AppPost:post-form' %}" class="btn btn-warning btn-lg">Create New Post</a>
+        
+        
+    </center>
+</div>
+{% endblock  %}

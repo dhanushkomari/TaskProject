@@ -1,0 +1,52 @@
+{% extends 'TaskApp/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+SignUp- ServiceProvider
+{% endblock  %}
+{% block content %}
+{% if request.user.is_staff %}
+    <div>
+        {% if not form.is_valid %}
+            <div class="mx-auto">
+                <br>
+                <h1 class="my_title text-center">
+                    Create a new account
+                </h1><br>
+                <div class="col-9 col-sm-12 col-md-12 col-lg-6 mx-auto bg-light">
+                    <br>
+                    <center><p><b>Fill the following form to create new Client account</b></p></center><br>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <br>
+                        <center><button type="submit" class="btn btn-primary">Register</button></center>
+
+                    </form>
+                    <br>
+                    
+                </div>
+            </div>  
+        {% else %}
+            <div class="mx-auto">
+                <br>
+                 <h1 class="my_title text-center">
+                   Client account has created Successfully.
+                 </h1><br>
+                  <p>Dear Customer,
+                     <br><br>
+                     Your account has been created and it is ready to use.
+                     <br>
+                     {% comment %} Please <a href="{% url 'signin' %}">CLick Here</a> to Login {% endcomment %}
+                 </p>
+            </div>
+        {% endif %}
+    </div><br>
+{% else %}
+<br><br><br>
+<center><h4 style="color: red;">Access Denied, You don't have permission to create Client account</h4></center><br><br>   
+<center><a href="{% url 'TaskApp:home' %}" class="btn btn-md btn-success">Go Home </a></cente
+{% endif %}
+
+    
+{% endblock  %}

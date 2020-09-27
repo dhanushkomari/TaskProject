@@ -1,0 +1,38 @@
+{% extends 'TaskApp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br>
+    <div class="container">
+        <h2 class="my_title text-center">Contact Page</h2><br><br>
+        <div class="row">
+            <div class="col-sm-6">
+                <br><br><br>
+                <h2 class=" my_title text-center" style="color: navy;">Welcome To contact Page</h2>
+                <br>
+                <h2 class="my_title text-center" style="color: blue;">
+                    We appreciate your interest In collaborating with the service providers
+                </h2>
+
+            </div>
+            <div class="col-sm-6">
+        
+        <center>
+            <form method="POST" class="form-control text-left">
+                {% csrf_token %}
+                <p>{{ form | crispy }}</p>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </center>
+        </div>
+        
+        <!-- <form action="" method="POST">
+            mail: <input type="email" value="{{request.user.email}}">
+            sub: <input type="text"><br>
+            message: <input type="text"><br>
+            <input type="submit">
+
+        </form> -->
+    </div>
+    
+
+{% endblock  %}

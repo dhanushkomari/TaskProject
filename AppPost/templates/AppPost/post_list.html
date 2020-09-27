@@ -1,0 +1,39 @@
+<br>
+{% extends 'TaskApp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+    <center><h2 class="my_title">Welcome to the Services Portal</h2><br></center><br>
+<div class="container">
+    <div class="row">        
+            {% for i in post %}
+            
+            <div class="col-lg-6">
+            <a href=""><h2 class="my_title">{{i.title}}</h2> </a>
+            <p>{{i.description}}</p>
+            <p>Posted On: <span style="color: orange;">{{i.created}}</span></p>
+            <p>Posted by: <span style="color: red;">{{i.user}}</span></p>
+            <p>Contact Email: <span style="color: violet;">{{i.user.email}}</span></p>
+            <br>
+                <a href="{% url 'AppPost:post-delete' pk %}">delete</a>
+            <br>
+            </div>
+            <div class="col-lg-6"><br><br>
+                
+                <!-- <h2 class="my_title">Contact</h2> -->
+                <a href="{% url 'AppPost:contact' %}" class="btn btn-primary btn-lg">Contact-{{i.user|title}}</a></center>
+                
+                
+            </div> 
+            
+
+                       
+            {% endfor %}
+    </div>
+</div>
+    
+    
+
+    
+    
+{% endblock  %}

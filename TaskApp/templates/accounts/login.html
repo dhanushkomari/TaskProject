@@ -1,0 +1,38 @@
+{% extends 'TaskApp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Login | Service Provider
+{% endblock  %}
+
+{% block content %}
+    <div class="container"><br>
+        <h1 class="my_title text-center">
+            LogIn To Fastapp Account
+        </h1><br>
+        <div class="row">
+             <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center my_custom_div">
+                 <br><br><br><br><br>   
+                 <b><h2 class="my_title">New Customer or forgot password?</h2></b>
+                 <br>
+                 
+                 <h2 class="my_title" style="color: blue;"> Contact Admin for more details and Create new account.</h2>
+                 
+             </div>
+             <div class="col-12 col-sm-12 col-md-12 col-lg-6 bg-light">
+                 <div>
+                     <br>
+                     <h2 class="my_title" style="color: orange blue orange; padding-left: 0.5em;">LOGIN</h2>
+                     <form method="POST">
+                         {% csrf_token %}
+                         <p>{{ form | crispy }}</p>
+                         <button type="submit" class="btn btn-primary">Login</button>
+                     </form>
+                     <br>
+                     {% comment %} Forgot Password ? <a href="#">Click here</a> {% endcomment %}
+                 </div>
+             </div>
+        </div><br>
+    </div>
+    <br>
+{% endblock  %}
