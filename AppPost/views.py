@@ -7,6 +7,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.models import User
 # Create your views here.
 
+
 ################################################
 ############  POST FORM View   #################
 ################################################
@@ -75,6 +76,8 @@ def  ContactView(request):
         return HttpResponse("Access Denied")
 def SuccessView(request):
     return HttpResponse("Mail has been sent")
+
+##### end of views ##########
 
 
 
